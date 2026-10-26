@@ -51,7 +51,7 @@ export async function embedText(value: string): Promise<number[]> {
   }
   const json = (await res.json()) as { embedding?: { values?: number[] } };
   const values = json.embedding?.values;
-  if (!values || values.length !== EMBED_DIMS) {
+  if (values?.length !== EMBED_DIMS) {
     throw new Error(`embedding bad dims: ${values?.length ?? 0}`);
   }
   return values;
