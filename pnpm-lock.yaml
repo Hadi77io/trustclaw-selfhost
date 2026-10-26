@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ai-sdk/openai-compatible':
-        specifier: ^3.0.78
-        version: 3.0.78(zod@3.25.76)
+        specifier: ^2.0.87
+        version: 2.0.87(zod@3.25.76)
       '@ai-sdk/react':
         specifier: ^3.0.87
         version: 3.0.87(react@19.2.4)(zod@3.25.76)
@@ -216,9 +216,9 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/openai-compatible@3.0.78':
-    resolution: {integrity: sha512-8r+qmbIf2YzPbkzlQibbetOmR4GdA/jAHtSJPhUbp6ZMG3PT6cBKwf/85TDyStyPTKtkFZ1qe1ytml3zu69EZQ==}
-    engines: {node: '>=22'}
+  '@ai-sdk/openai-compatible@2.0.87':
+    resolution: {integrity: sha512-tge19iHFcU4r6QxlFmwIRU/ytd6RFjsXfMpEc9sLiS5+NnkUYLeh2mm4RzemdqrQS6uO0h0t4RD04CpbgjWXqw==}
+    engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
@@ -234,19 +234,19 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/provider-utils@5.0.68':
-    resolution: {integrity: sha512-SASuC1DqSdWoYyYfpxbgPKm9VCnMP1VTahWY7WEYzi2QDmFdbw4runqmH7NKC33iB/INo+XbaN2hH3dXHSNQZw==}
-    engines: {node: '>=22'}
+  '@ai-sdk/provider-utils@4.0.62':
+    resolution: {integrity: sha512-+FXkZ2e169zASBHP5HAakP0Iai3Eoa8zgh7bnuZExsek3N9HgGt/c7l1Oibdxb79vvsn5Mrg2Sjam80mR6bL8A==}
+    engines: {node: '>=18.17'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
+
+  '@ai-sdk/provider@3.0.19':
+    resolution: {integrity: sha512-5lWq7zSfRaU5ylDESn3sDQjgGl2AI1vjZKO/6JY3aFW70ct4zcP1kN+ZUYOuTXr28fVsYbyu2YFhddLdIgQFZQ==}
+    engines: {node: '>=18'}
 
   '@ai-sdk/provider@3.0.8':
     resolution: {integrity: sha512-oGMAgGoQdBXbZqNG0Ze56CHjDZ1IDYOwGYxYjO5KLSlz5HiNQ9udIXsPZ61VWaHGZ5XW/jyjmr6t2xz2jGVwbQ==}
     engines: {node: '>=18'}
-
-  '@ai-sdk/provider@4.0.34':
-    resolution: {integrity: sha512-Ip7ZQBq/FiGpM1mmOVseTtX9PBjnzo0bLC41WTgBSBBRUBz6LhNFGbYaNUzI6hPm6ll1oNSPOAZc/q/z+3QZEQ==}
-    engines: {node: '>=22'}
 
   '@ai-sdk/react@3.0.87':
     resolution: {integrity: sha512-qa4Ywm08g27Voys1xuF2WeX3s8shd4hLJCCxi/Ws6cUZsWpMnFW2rtEfCcKRlWyJ4NRypauiNmcvQKz4v6u0/A==}
@@ -2086,9 +2086,6 @@ packages:
     resolution: {integrity: sha512-Fw28YZpRnA3cAHHDlkt7xQHiJ0fcL+NRcIqsocZQUSmbzeIKRpwttJjik5ZGanXP+vlA4SbTg+AbA3bP363l+w==}
     engines: {node: '>= 20'}
 
-  '@workflow/serde@4.1.0':
-    resolution: {integrity: sha512-pav4F2BoirECWR7Nf1TKt+2eETcBj7jj4cBefQ8VXQCA6NPkaKeLfj/zMgi+3zYV5ZIBT4GuUiphsj0/b9hPQQ==}
-
   accepts@2.0.0:
     resolution: {integrity: sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==}
     engines: {node: '>= 0.6'}
@@ -2864,10 +2861,6 @@ packages:
   etag@1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
-
-  eventsource-parser@3.0.6:
-    resolution: {integrity: sha512-Vo1ab+QXPzZ4tCa8SwIHJFaSzy4R6SHf7BY79rFBDf0idraZWAkYrDjDj8uWaSm3S2TK+hJ7/t1CEmZ7jXw+pg==}
-    engines: {node: '>=18.0.0'}
 
   eventsource-parser@3.1.1:
     resolution: {integrity: sha512-EKN1vKAMcZ8MlYMpaNuxN6R9yakzH6uajHcHVTqWJzvu5pWw9DyhbP35HH8MVBQ+dZjAfDxk+A8NiR9KWaXiyQ==}
@@ -4848,9 +4841,9 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
-  undici@7.30.1:
-    resolution: {integrity: sha512-03KrMbjIFDWQR5RNPrSw3bd1r12JpyFQl9/yxjUbJtqkjmllqC5lFjZh6ujeuJCKr8EOQvRW872Oy/az+nLYxg==}
-    engines: {node: '>=20.18.1'}
+  undici@6.29.1:
+    resolution: {integrity: sha512-EvRlUt/QqAEvXdQeRMYUfwOQsfzpDztykrG2owGEE/rBOBoYv9uF39ZzsNDh4lTFHhTr2XOZjKkYgueD12ZmGA==}
+    engines: {node: '>=18.17'}
 
   unicorn-magic@0.3.0:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
@@ -5078,40 +5071,39 @@ snapshots:
       '@vercel/oidc': 3.1.0
       zod: 3.25.76
 
-  '@ai-sdk/openai-compatible@3.0.78(zod@3.25.76)':
+  '@ai-sdk/openai-compatible@2.0.87(zod@3.25.76)':
     dependencies:
-      '@ai-sdk/provider': 4.0.34
-      '@ai-sdk/provider-utils': 5.0.68(zod@3.25.76)
+      '@ai-sdk/provider': 3.0.19
+      '@ai-sdk/provider-utils': 4.0.62(zod@3.25.76)
       zod: 3.25.76
 
   '@ai-sdk/provider-utils@4.0.14(zod@3.25.76)':
     dependencies:
       '@ai-sdk/provider': 3.0.8
       '@standard-schema/spec': 1.1.0
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.1.1
       zod: 3.25.76
 
   '@ai-sdk/provider-utils@4.0.15(zod@3.25.76)':
     dependencies:
       '@ai-sdk/provider': 3.0.8
       '@standard-schema/spec': 1.1.0
-      eventsource-parser: 3.0.6
-      zod: 3.25.76
-
-  '@ai-sdk/provider-utils@5.0.68(zod@3.25.76)':
-    dependencies:
-      '@ai-sdk/provider': 4.0.34
-      '@standard-schema/spec': 1.1.0
-      '@workflow/serde': 4.1.0
       eventsource-parser: 3.1.1
-      undici: 7.30.1
       zod: 3.25.76
 
-  '@ai-sdk/provider@3.0.8':
+  '@ai-sdk/provider-utils@4.0.62(zod@3.25.76)':
+    dependencies:
+      '@ai-sdk/provider': 3.0.19
+      '@standard-schema/spec': 1.1.0
+      eventsource-parser: 3.1.1
+      undici: 6.29.1
+      zod: 3.25.76
+
+  '@ai-sdk/provider@3.0.19':
     dependencies:
       json-schema: 0.4.0
 
-  '@ai-sdk/provider@4.0.34':
+  '@ai-sdk/provider@3.0.8':
     dependencies:
       json-schema: 0.4.0
 
@@ -5673,7 +5665,7 @@ snapshots:
       cors: 2.8.6
       cross-spawn: 7.0.6
       eventsource: 3.0.7
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.1.1
       express: 5.2.1
       express-rate-limit: 8.2.1(express@5.2.1)
       hono: 4.11.8
@@ -6980,8 +6972,6 @@ snapshots:
 
   '@vercel/oidc@3.1.0': {}
 
-  '@workflow/serde@4.1.0': {}
-
   accepts@2.0.0:
     dependencies:
       mime-types: 3.0.2
@@ -7831,13 +7821,11 @@ snapshots:
 
   etag@1.8.1: {}
 
-  eventsource-parser@3.0.6: {}
-
   eventsource-parser@3.1.1: {}
 
   eventsource@3.0.7:
     dependencies:
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.1.1
 
   execa@5.1.1:
     dependencies:
@@ -10143,7 +10131,7 @@ snapshots:
 
   undici-types@6.21.0: {}
 
-  undici@7.30.1: {}
+  undici@6.29.1: {}
 
   unicorn-magic@0.3.0: {}
 
