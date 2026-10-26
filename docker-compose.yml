@@ -1,0 +1,97 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: trustclaw
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: trustclaw
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trustclaw -d trustclaw"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_APP_URL: https://trustclaw.152-53-48-112.sslip.io
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: 0.0.0.0
+      DATABASE_URL: postgresql://trustclaw:${POSTGRES_PASSWORD}@db:5432/trustclaw
+      REDIS_URL: redis://redis:6379
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
+      CRON_SECRET: ${CRON_SECRET}
+      COMPOSIO_API_KEY: ${COMPOSIO_API_KEY}
+      LLM_BASE_URL: ${LLM_BASE_URL}
+      LLM_API_KEY: ${LLM_API_KEY}
+      LLM_MODEL: ${LLM_MODEL}
+      LLM_SESSION: trustclaw-selfhost
+      EMBEDDING_API_KEY: ${EMBEDDING_API_KEY}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL}
+      NEXT_PUBLIC_APP_URL: https://trustclaw.152-53-48-112.sslip.io
+      RATE_LIMIT_ENABLED: "true"
+      RATE_LIMIT_FAIL_MODE: open
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME}
+      TELEGRAM_WEBHOOK_SECRET: ${TELEGRAM_WEBHOOK_SECRET}
+    networks:
+      - default
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=one-person-company-hermes-qqn0ad"
+      - "traefik.http.routers.trustclaw.rule=Host(`trustclaw.152-53-48-112.sslip.io`)"
+      - "traefik.http.routers.trustclaw.entrypoints=web,websecure"
+      - "traefik.http.routers.trustclaw.tls=true"
+      - "traefik.http.routers.trustclaw.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.trustclaw.service=trustclaw"
+      - "traefik.http.services.trustclaw.loadbalancer.server.port=3000"
+
+  cron:
+    image: alpine:3.20
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      CRON_SECRET: ${CRON_SECRET}
+    command:
+      - sh
+      - -c
+      - |
+        apk add --no-cache curl >/dev/null 2>&1
+        while true; do
+          curl -fsS -m 120 -H "Authorization: Bearer $$CRON_SECRET" http://app:3000/api/cron/trustclaw >/dev/null 2>&1 || true
+          sleep 60
+        done
+
+volumes:
+  pg-data:
+
+networks:
+  default:
+  traefik:
+    external: true
+    name: one-person-company-hermes-qqn0ad
